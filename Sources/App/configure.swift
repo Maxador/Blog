@@ -3,6 +3,16 @@ import Vapor
 
 /// Called before your application initializes.
 public func configure(_ config: inout Config, _ env: inout Environment, _ services: inout Services) throws {
+    if env == .development {
+        #if os(Linux)
+        services.register(Server.self) { container -> EngineServer in
+            var serverConfig = try container.make() as EngineServerConfig
+            serverConfig.hostname = "0.0.0.0"
+
+            return EngineServer(config: serverConfig, container: container)
+        }
+        #endif
+    }
     /// Register providers first
     try services.register(FluentSQLiteProvider())
 

@@ -5,7 +5,12 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt-get update \
 && apt-get -q -y install apt-utils \
 dialog \
-wget
+wget \
+cmake \
+git
+RUN git clone https://github.com/commonmark/cmark
+RUN make -C cmark
+RUN make -C cmark install
 RUN /bin/bash -c "$(wget -qO- https://apt.vapor.sh)"
 RUN apt-get -q -y install vapor
 
