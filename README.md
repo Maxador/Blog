@@ -18,3 +18,12 @@
         <img src="http://img.shields.io/badge/swift-4.1-brightgreen.svg" alt="Swift 4.1">
     </a>
 </p>
+
+## To be able to use the Playground
+We need to copy fake frameworks modulemap in the Framework folder on the
+platform (macOS). [This post] (https://medium.com/@serzhit/how-to-make-vapor-3-swift-playground-in-xcode-10-c7147b0f7f18)
+is a guide on how to proceed. This is a temporary step right now. It is probably
+possible to change the xcode project build settings to look for a modulemap in
+the project. Also, there is a possibility that the Swift-NIO library will be
+usable in [Playgrounds](https://github.com/apple/swift-nio/pull/636). If Vapor
+update to this version of NIO, it should be usable more easily in Playgrounds.
