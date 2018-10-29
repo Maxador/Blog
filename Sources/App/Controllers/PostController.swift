@@ -14,8 +14,9 @@ final class PostController: RouteCollection {
             body([
                 h1([.text("This is a H1")]),
                 .raw(CommonMark.Node(markdown: "## H2 from a Markdown string")!.html),
-                p([.text("This is a paragraph")])
-                  ])
+                p([.text("This is a paragraph")]),
+                span([.text("This is a span")]),
+                  ]),
             ])
     }
 }
