@@ -17,9 +17,15 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     try services.register(FluentSQLiteProvider())
 
     /// Register routes to the router
-    let router = EngineRouter.default()
-    try routes(router)
-    services.register(router, as: Router.self)
+    services.register(Router.self) { container -> EngineRouter in
+        let router = EngineRouter.default()
+        try routes(router, container)
+        return router
+    }
+
+    services.register { container -> PostService in
+        return PostService()
+    }
 
     /// Register middleware
     var middlewares = MiddlewareConfig() // Create _empty_ middleware config

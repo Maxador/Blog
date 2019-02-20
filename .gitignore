@@ -12,6 +12,7 @@ DerivedData/
 
 ### Vapor ###
 Config/secrets
+Public/assets/**
 
 ### Vapor Patch ###
 

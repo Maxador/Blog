@@ -1,7 +1,7 @@
 import Vapor
 
 /// Register your application's routes here.
-public func routes(_ router: Router) throws {
+public func routes(_ router: Router, _ container: Container) throws {
     // Basic "It works" example
     router.get { req in
         return "It works!"
@@ -12,5 +12,5 @@ public func routes(_ router: Router) throws {
         return "Hello, world!"
     }
     
-    try router.register(collection: PostController())
+    try router.register(collection: PostController(postService: container.make()))
 }
