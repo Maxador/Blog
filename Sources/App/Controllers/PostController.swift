@@ -19,7 +19,7 @@ final class PostController: RouteCollection {
         return html([
             head(title: "Blog", content: [
                 link([
-                    type(Text.css),
+                    type(.text(Text.css, charset: nil)),
                     rel(.stylesheet),
                     href("assets/css/main.css")
                 ])
