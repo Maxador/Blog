@@ -17,7 +17,13 @@ final class PostController: RouteCollection {
     func index(req: Request) -> Html.Node {
         let posts = self.postService.getPosts()
         return html([
-            head(title: "Blog"),
+            head(title: "Blog", content: [
+                link([
+                    type(Text.css),
+                    rel(.stylesheet),
+                    href("assets/css/main.css")
+                ])
+            ]),
             body([
                 h1([.text("This is a H1")]),
                 .raw(CommonMark.Node(markdown: "## H2 from a Markdown string")!.html),
